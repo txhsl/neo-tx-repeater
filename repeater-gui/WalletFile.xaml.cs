@@ -10,7 +10,6 @@ namespace repeater_gui
     public partial class WalletFile : Window
     {
         public string walletPathA { get; set; }
-        public string indexerPathA { get; set; }
         public string walletPasswordA { get; set; }
 
         public string walletPathB { get; set; }
@@ -25,7 +24,6 @@ namespace repeater_gui
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
             walletPathA = this.txtWalletPathA.Text;
-            indexerPathA = this.txtIndexerPath.Text;
             IntPtr pA = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(this.txtbxPasswordA.SecurePassword);
             walletPasswordA = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(pA);
 
@@ -48,6 +46,7 @@ namespace repeater_gui
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.FileName = "请选择钱包文件";
             dlg.DefaultExt = ".db3";
+            dlg.Filter = "全部文件类型|*.*|(*.db3)|*.db3|(*.json)|*.json";
 
             bool? result = dlg.ShowDialog();
             if (result == true)
@@ -60,7 +59,8 @@ namespace repeater_gui
         {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.FileName = "请选择钱包文件"; 
-            dlg.DefaultExt = ".db3"; 
+            dlg.DefaultExt = ".db3";
+            dlg.Filter = "全部文件类型|*.*|(*.db3)|*.db3|(*.json)|*.json";
 
             bool? result = dlg.ShowDialog();
             if (result == true)

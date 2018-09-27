@@ -1,6 +1,5 @@
 ﻿using Neo;
 using Neo.Core;
-using Neo.Implementations.Wallets.EntityFramework;
 using Neo.Wallets;
 using System;
 using System.Collections.ObjectModel;
@@ -11,7 +10,6 @@ using System.Windows.Controls;
 using System.Windows.Threading;
 using repeater_gui.Properties;
 using Neo.SmartContract;
-using Neo.Implementations.Wallets.NEP6;
 
 namespace repeater_gui
 {
@@ -23,7 +21,7 @@ namespace repeater_gui
         Thread threadTransaction;
         Thread threadInit;
         public bool direction = true;
-        static int amount = 100000;
+        static int amount = 10;
 
 
         private Account accountA;
@@ -152,8 +150,8 @@ namespace repeater_gui
             {
                 try
                 {
-                    accountA = new Account(walletfile.indexerPathA, walletfile.walletPathA, walletfile.walletPasswordA);
-                    accountB = new Account(walletfile.indexerPathB, walletfile.walletPathB, walletfile.walletPasswordB);
+                    accountA = new Account(walletfile.walletPathA, walletfile.walletPasswordA);
+                    accountB = new Account(walletfile.walletPathB, walletfile.walletPasswordB);
                 }
                 catch (CryptographicException)
                 {
@@ -185,7 +183,7 @@ namespace repeater_gui
                 }
                 if (curWalletAmount > amount)
                 {
-                    TransactProcess(outputs, accountPair[i].Wallet);
+                    TransactProcess(outputs, Program.CurrentWallet);
                 }
                 else
                 {
@@ -241,7 +239,7 @@ namespace repeater_gui
 
             if (curWalletAmount > amount)
             {
-                TransactProcess(outputs, accountPair[0].Wallet);
+                TransactProcess(outputs, Program.CurrentWallet);
             }
             else
             {
@@ -249,7 +247,7 @@ namespace repeater_gui
             }
         }
 
-        private void TransactProcess(TransactionOutput[] pOutputs, NEP6Wallet pWallet)
+        private void TransactProcess(TransactionOutput[] pOutputs, Wallet pWallet)
         {
             //构造交易
             string availableA = accountA.Wallet.GetAvailable(Blockchain.GoverningToken.Hash).ToString();

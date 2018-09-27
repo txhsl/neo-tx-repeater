@@ -1,17 +1,16 @@
 ﻿using Neo.Core;
 using Neo.Implementations.Blockchains.LevelDB;
-using Neo.Implementations.Wallets.EntityFramework;
-using Neo.Implementations.Wallets.NEP6;
 using Neo.Network;
 using System;
 using repeater_gui.Properties;
+using Neo.Wallets;
 
 namespace repeater_gui
 {
     static class Program
     {
         public static LocalNode LocalNode;
-        public static NEP6Wallet CurrentWallet;
+        public static Wallet CurrentWallet;
         public static MainWindow MainWindow;
 
         ///<summary>
