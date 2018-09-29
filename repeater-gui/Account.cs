@@ -26,7 +26,7 @@ namespace repeater_gui
         {
         }
 
-        public Account(string walletpath, string password)
+        public Account(string walletpath, string password, string wif)
         {
             Walletpath = walletpath;
             switch (Path.GetExtension(walletpath))
@@ -34,14 +34,14 @@ namespace repeater_gui
                 case ".db3":
                     {
                         Wallet = UserWallet.Create(walletpath, password);
-                        WalletAccount account = Wallet.CreateAccount();
+                        WalletAccount account = Wallet.CreateAccount(Wallet.GetPrivateKeyFromWIF(wif));
                     }
                     break;
                 case ".json":
                     {
                         NEP6Wallet wallet = new NEP6Wallet(walletpath);
                         wallet.Unlock(password);
-                        WalletAccount account = wallet.CreateAccount();
+                        WalletAccount account = wallet.CreateAccount(Wallet.GetPrivateKeyFromWIF(wif));
                         wallet.Save();
                         Wallet = wallet;
                     }
@@ -58,7 +58,7 @@ namespace repeater_gui
             Password = password;
         }
 
-        public void Init(string walletpath, string password)
+        public void Init(string walletpath, string password, string wif)
         {
             Walletpath = walletpath;
             switch (Path.GetExtension(walletpath))
@@ -66,14 +66,14 @@ namespace repeater_gui
                 case ".db3":
                     {
                         Wallet = UserWallet.Create(walletpath, password);
-                        WalletAccount account = Wallet.CreateAccount();
+                        WalletAccount account = Wallet.CreateAccount(Wallet.GetPrivateKeyFromWIF(wif));
                     }
                     break;
                 case ".json":
                     {
                         NEP6Wallet wallet = new NEP6Wallet(walletpath);
                         wallet.Unlock(password);
-                        WalletAccount account = wallet.CreateAccount();
+                        WalletAccount account = wallet.CreateAccount(Wallet.GetPrivateKeyFromWIF(wif));
                         wallet.Save();
                         Wallet = wallet;
                     }

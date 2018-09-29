@@ -150,8 +150,8 @@ namespace repeater_gui
             {
                 try
                 {
-                    accountA = new Account(walletfile.walletPathA, walletfile.walletPasswordA);
-                    accountB = new Account(walletfile.walletPathB, walletfile.walletPasswordB);
+                    accountA = new Account(walletfile.walletPathA, walletfile.walletPasswordA, "KxC7fxvBgNNeiFmcp1gRzN6ZfSFXfxrTC6WDXAFjhWDqrknoZUrv");
+                    accountB = new Account(walletfile.walletPathB, walletfile.walletPasswordB, "KwPRvCPeoe2y2CvqFypAzv5nVKjziQPStHrFndZQAS5MjQbgrC5C");
                 }
                 catch (CryptographicException)
                 {
