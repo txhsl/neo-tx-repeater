@@ -27,7 +27,7 @@
         <Button x:Name="btnStart" Content="Start" HorizontalAlignment="Left" Height="35" Margin="67,13,0,0" VerticalAlignment="Top" Width="120" Grid.Row="2" Click="btnStart_Click" />
         <Button x:Name="btnStop" Content="Pause" HorizontalAlignment="Left" Height="35" Margin="253,13,0,0" VerticalAlignment="Top" Width="120" Grid.Row="2" Click="btnStop_Click" />
         <Button x:Name="btnRebuild" Content="Rebuild Wallet" HorizontalAlignment="Left" Height="35" Margin="726,13,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.049,0.225" Click="btnRebuild_Click" />
-        <Label x:Name="label" Content="AntShares Transaction Builder" Margin="402,10,401.6,11.4" />
+        <Label x:Name="label" Content="Neo Transaction Builder" Margin="402,10,401.6,11.4" />
         <StatusBar  Grid.Row="3" >
             <StatusBarItem>
                 <Label Name="lbl1" Content="Height:"/>
